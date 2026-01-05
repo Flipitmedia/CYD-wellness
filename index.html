@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C&D Wellness | Adaptógenos & Educación</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== CSS VARIABLES - Brand Colors ===== */
+        :root {
+            --marfil: #F7F6F2;
+            --arena: #DBC4A8;
+            --chamois: #A68050;
+            --french-toast: #402D21;
+            
+            --font-display: 'Playfair Display', Georgia, serif;
+            --font-body: 'Work Sans', -apple-system, sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 2rem;
+            --space-lg: 4rem;
+            --space-xl: 6rem;
+            
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--marfil);
+            color: var(--french-toast);
+            line-height: 1.7;
+            font-weight: 400;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        h1 { font-size: clamp(2.5rem, 6vw, 4rem); }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+        h3 { font-size: clamp(1.2rem, 2.5vw, 1.5rem); }
+        
+        p { font-size: 1rem; max-width: 65ch; }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .section {
+            padding: var(--space-xl) 0;
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--marfil);
+            border-bottom: 1px solid var(--arena);
+            padding: var(--space-sm) 0;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--chamois);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+        
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+        
+        .logo-subtitle {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--french-toast);
+            opacity: 0.6;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+        
+        nav a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--french-toast);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--chamois);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .cart-btn svg {
+            width: 22px;
+            height: 22px;
+            color: var(--french-toast);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 16px;
+            height: 16px;
+            background: var(--chamois);
+            color: var(--marfil);
+            font-size: 0.65rem;
+            font-weight: 600;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--chamois);
+            color: var(--marfil);
+        }
+        
+        .btn-primary:hover {
+            background: var(--french-toast);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--chamois);
+            color: var(--chamois);
+        }
+        
+        .btn-outline:hover {
+            background: var(--chamois);
+            color: var(--marfil);
+        }
+        
+        .btn-light {
+            background: var(--marfil);
+            color: var(--french-toast);
+        }
+        
+        .btn-light:hover {
+            background: var(--arena);
+        }
+        
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        
+        .hero-bg-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                var(--marfil) 0%,
+                rgba(219, 196, 168, 0.4) 50%,
+                var(--marfil) 100%
+            );
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s var(--transition-smooth) forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--chamois);
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+        
+        .section-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--chamois);
+        }
+        
+        .hero h1 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero h1 em {
+            color: var(--chamois);
+            font-style: italic;
+        }
+        
+        .hero-description {
+            color: rgba(64, 45, 33, 0.8);
+            margin-bottom: var(--space-lg);
+            font-size: 1.1rem;
+        }
+        
+        .hero-ctas {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+        
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 450px;
+            aspect-ratio: 3/4;
+            background: linear-gradient(145deg, var(--arena), var(--chamois));
+            border-radius: 200px 200px 24px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: var(--marfil);
+            text-align: center;
+            padding: var(--space-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-image svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: var(--space-md);
+            opacity: 0.7;
+        }
+        
+        .hero-image p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .hero-badge {
+            position: absolute;
+            bottom: 15%;
+            left: -20px;
+            background: var(--marfil);
+            padding: var(--space-md);
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(64, 45, 33, 0.15);
+        }
+        
+        .hero-badge p {
+            font-size: 0.75rem;
+            color: rgba(64, 45, 33, 0.6);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .hero-badge span {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--chamois);
+        }
+        
+        /* ===== PRODUCTS SECTION ===== */
+        .products {
+            background: var(--marfil);
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .products-header-text h2 {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .products-header-text p {
+            color: rgba(64, 45, 33, 0.7);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .product-card {
+            background: var(--marfil);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s var(--transition-smooth);
+            border: 1px solid var(--arena);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(64, 45, 33, 0.12);
+            border-color: var(--chamois);
+        }
+        
+        .product-image {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        .product-image-front,
+        .product-image-back {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.4s var(--transition-smooth);
+        }
+        
+        .product-image-front {
+            background: var(--arena);
+        }
+        
+        .product-image-back {
+            background: linear-gradient(145deg, var(--chamois), var(--french-toast));
+            opacity: 0;
+        }
+        
+        .product-card:hover .product-image-front {
+            opacity: 0;
+        }
+        
+        .product-card:hover .product-image-back {
+            opacity: 1;
+        }
+        
+        .product-image svg {
+            width: 60px;
+            height: 60px;
+            color: var(--chamois);
+        }
+        
+        .product-image-back svg {
+            color: var(--marfil);
+        }
+        
+        .product-image-back p {
+            color: rgba(247, 246, 242, 0.8);
+            font-size: 0.8rem;
+            margin-top: var(--space-sm);
+            padding: 0 var(--space-sm);
+            text-align: center;
+        }
+        
+        .product-content {
+            padding: var(--space-md);
+        }
+        
+        .product-category {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--chamois);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .product-card h3 {
+            font-size: 1rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .product-card .product-desc {
+            font-size: 0.8rem;
+            color: rgba(64, 45, 33, 0.6);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-price {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--french-toast);
+        }
+        
+        .product-add {
+            width: 36px;
+            height: 36px;
+            background: var(--chamois);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .product-add:hover {
+            background: var(--french-toast);
+            transform: scale(1.1);
+        }
+        
+        .product-add svg {
+            width: 18px;
+            height: 18px;
+            color: var(--marfil);
+        }
+        
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            background: var(--arena);
+        }
+        
+        .services-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .services-header h2 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .services-header p {
+            margin: 0 auto;
+            color: rgba(64, 45, 33, 0.8);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+        }
+        
+        .service-card {
+            background: var(--marfil);
+            border-radius: 24px;
+            padding: var(--space-lg);
+            transition: all 0.3s var(--transition-smooth);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(64, 45, 33, 0.1);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--arena);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--chamois);
+        }
+        
+        .service-card h3 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .service-card p {
+            font-size: 0.9rem;
+            color: rgba(64, 45, 33, 0.7);
+            margin-bottom: var(--space-md);
+        }
+        
+        .service-price {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+        
+        .service-price span {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--chamois);
+        }
+        
+        .service-price small {
+            font-size: 0.8rem;
+            color: rgba(64, 45, 33, 0.5);
+        }
+        
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--chamois);
+            text-decoration: none;
+            transition: gap 0.3s;
+        }
+        
+        .service-link:hover {
+            gap: var(--space-sm);
+        }
+        
+        .service-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        /* ===== ABOUT/COMPANY SECTION ===== */
+        .about-company {
+            background: var(--marfil);
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+        
+        .about-visual {
+            background: var(--arena);
+            border-radius: 24px;
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-visual-placeholder {
+            text-align: center;
+            color: var(--chamois);
+        }
+        
+        .about-visual-placeholder svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: var(--space-sm);
+            opacity: 0.5;
+        }
+        
+        .about-visual-placeholder p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        
+        .about-content h2 {
+            margin-bottom: var(--space-md);
+        }
+        
+        .about-content p {
+            color: rgba(64, 45, 33, 0.8);
+            margin-bottom: var(--space-md);
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+        }
+        
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--arena);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .about-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            color: var(--chamois);
+        }
+        
+        .about-feature h4 {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+        
+        .about-feature p {
+            font-size: 0.8rem;
+            color: rgba(64, 45, 33, 0.6);
+            margin: 0;
+        }
+        
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            background: var(--french-toast);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(166, 128, 80, 0.2) 0%, transparent 60%);
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+        }
+        
+        .cta-text h2 {
+            color: var(--marfil);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .cta-text p {
+            color: rgba(247, 246, 242, 0.7);
+        }
+        
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--marfil);
+            padding: var(--space-xl) 0 var(--space-md);
+            border-top: 1px solid var(--arena);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: rgba(64, 45, 33, 0.7);
+            margin: var(--space-md) 0;
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            background: var(--arena);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--french-toast);
+            transition: all 0.3s;
+        }
+        
+        .footer-social a:hover {
+            background: var(--chamois);
+            color: var(--marfil);
+        }
+        
+        .footer-social a svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .footer-column h4 {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--chamois);
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: var(--space-xs);
+        }
+        
+        .footer-column a {
+            font-size: 0.85rem;
+            color: rgba(64, 45, 33, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--chamois);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--arena);
+        }
+        
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: rgba(64, 45, 33, 0.5);
+        }
+        
+        .footer-payments {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .footer-payments span {
+            background: var(--arena);
+            padding: 0.35rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--french-toast);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-visual {
+                order: -1;
+            }
+            
+            .hero-image {
+                max-width: 300px;
+            }
+            
+            .section-label::before {
+                display: none;
+            }
+            
+            .hero-ctas {
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-sm);
+                text-align: center;
+            }
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s var(--transition-smooth);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg class="logo-mark" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="40" fill="var(--chamois)" opacity="0.2"/>
+                    <path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70 65 55 Q65 40 50 20Z" fill="var(--chamois)"/>
+                </svg>
+                <span class="logo-text">
+                    C&D Wellness
+                    <span class="logo-subtitle">Adaptógenos & Educación</span>
+                </span>
+            </a>
+            
+            <nav>
+                <a href="#products">Productos</a>
+                <a href="#services">Servicios</a>
+                <a href="#about">Nosotros</a>
+                <a href="#contact">Contacto</a>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="cart-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+                <a href="#" class="btn btn-primary">Comprar</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-bg-gradient"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <p class="section-label">Bienestar Integral</p>
+                <h1>Hongos adaptógenos <em>& educación</em></h1>
+                <p class="hero-description">
+                    Extractos de hongos medicinales no activos, cacao ceremonial & servicios educativos 
+                    para tu bienestar integral. Productos naturales con trazabilidad completa.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#products" class="btn btn-primary">Ver Productos</a>
+                    <a href="#services" class="btn btn-outline">Servicios Educativos</a>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="hero-image">
+                    <svg viewBox="0 0 100 100" fill="currentColor">
+                        <path d="M30 70 L30 50 Q30 40 40 35 L40 25 Q40 20 50 20 Q60 20 60 25 L60 35 Q70 40 70 50 L70 70 Z"/>
+                        <rect x="35" y="70" width="30" height="10" rx="2"/>
+                    </svg>
+                    <p>Imagen Producto Destacado</p>
+                </div>
+                <div class="hero-badge">
+                    <p>Envío a todo Chile</p>
+                    <span>24-48 hrs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- PRODUCTS -->
+    <section class="products section" id="products">
+        <div class="container">
+            <div class="products-header reveal">
+                <div class="products-header-text">
+                    <p class="section-label">Catálogo</p>
+                    <h2>Nuestros Productos</h2>
+                    <p>Extractos de hongos adaptógenos & cacao ceremonial de alta calidad.</p>
+                </div>
+                <a href="#" class="btn btn-outline">Ver todo el catálogo</a>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <div class="product-image-front">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M35 70 L35 45 Q35 35 50 30 Q65 35 65 45 L65 70 Z"/>
+                                <rect x="40" y="70" width="20" height="8" rx="2"/>
+                            </svg>
+                        </div>
+                        <div class="product-image-back">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M35 70 L35 45 Q35 35 50 30 Q65 35 65 45 L65 70 Z"/>
+                                <rect x="40" y="70" width="20" height="8" rx="2"/>
+                            </svg>
+                            <p>Potencia cognitiva & claridad mental</p>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-category">Adaptógeno</p>
+                        <h3>Melena de León</h3>
+                        <p class="product-desc">Tintura 30ml - Hericium erinaceus</p>
+                        <div class="product-footer">
+                            <span class="product-price">$24.990</span>
+                            <button class="product-add">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <div class="product-image-front">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <ellipse cx="50" cy="50" rx="25" ry="15"/>
+                                <ellipse cx="50" cy="45" rx="20" ry="12"/>
+                            </svg>
+                        </div>
+                        <div class="product-image-back">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <ellipse cx="50" cy="50" rx="25" ry="15"/>
+                                <ellipse cx="50" cy="45" rx="20" ry="12"/>
+                            </svg>
+                            <p>Sistema inmune & longevidad</p>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-category">Adaptógeno</p>
+                        <h3>Reishi</h3>
+                        <p class="product-desc">Tintura 30ml - Ganoderma lucidum</p>
+                        <div class="product-footer">
+                            <span class="product-price">$22.990</span>
+                            <button class="product-add">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <div class="product-image-front">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M40 70 Q35 50 45 40 Q50 35 55 40 Q65 50 60 70 Z"/>
+                            </svg>
+                        </div>
+                        <div class="product-image-back">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <path d="M40 70 Q35 50 45 40 Q50 35 55 40 Q65 50 60 70 Z"/>
+                            </svg>
+                            <p>Energía & rendimiento físico</p>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-category">Adaptógeno</p>
+                        <h3>Cordyceps</h3>
+                        <p class="product-desc">Tintura 30ml - Cordyceps militaris</p>
+                        <div class="product-footer">
+                            <span class="product-price">$26.990</span>
+                            <button class="product-add">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card reveal">
+                    <div class="product-image">
+                        <div class="product-image-front">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <rect x="30" y="35" width="40" height="30" rx="5"/>
+                                <circle cx="50" cy="50" r="8"/>
+                            </svg>
+                        </div>
+                        <div class="product-image-back">
+                            <svg viewBox="0 0 100 100" fill="currentColor">
+                                <rect x="30" y="35" width="40" height="30" rx="5"/>
+                                <circle cx="50" cy="50" r="8"/>
+                            </svg>
+                            <p>Apertura del corazón & conexión</p>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <p class="product-category">Ceremonial</p>
+                        <h3>Cacao Ceremonial</h3>
+                        <p class="product-desc">Pasta 250g - Grado ceremonial</p>
+                        <div class="product-footer">
+                            <span class="product-price">$18.990</span>
+                            <button class="product-add">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 5v14M5 12h14"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- SERVICES -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="services-header reveal">
+                <p class="section-label" style="justify-content: center;">Formación</p>
+                <h2>Servicios Educativos</h2>
+                <p>Talleres, cursos & consultoría especializada en micología & bienestar.</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <h3>Taller de Micología</h3>
+                    <p>
+                        Introducción al reino fungi, identificación de especies, propiedades 
+                        medicinales & cultivo básico de hongos adaptógenos.
+                    </p>
+                    <div class="service-price">
+                        <span>$45.000</span>
+                        <small>/ por persona</small>
+                    </div>
+                    <a href="#" class="service-link">
+                        Ver próximas fechas
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 16v-4"/>
+                            <path d="M12 8h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Reducción de Riesgos</h3>
+                    <p>
+                        Formación en prácticas seguras, interacciones, contraindicaciones 
+                        & protocolos de uso responsable de sustancias.
+                    </p>
+                    <div class="service-price">
+                        <span>$35.000</span>
+                        <small>/ por persona</small>
+                    </div>
+                    <a href="#" class="service-link">
+                        Ver próximas fechas
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Consultoría Empresarial</h3>
+                    <p>
+                        Asesoría para empresas en programas de bienestar, 
+                        documentación técnica & desarrollo de productos adaptógenos.
+                    </p>
+                    <div class="service-price">
+                        <span>Cotizar</span>
+                        <small>/ proyecto</small>
+                    </div>
+                    <a href="#" class="service-link">
+                        Solicitar cotización
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ABOUT COMPANY -->
+    <section class="about-company section" id="about">
+        <div class="container about-grid">
+            <div class="about-visual reveal">
+                <div class="about-visual-placeholder">
+                    <svg viewBox="0 0 100 100" fill="currentColor">
+                        <circle cx="50" cy="50" r="30"/>
+                    </svg>
+                    <p>Imagen Equipo / Proceso</p>
+                </div>
+            </div>
+            
+            <div class="about-content reveal">
+                <p class="section-label">Sobre Nosotros</p>
+                <h2>C&D Wellness SpA</h2>
+                <p>
+                    Somos una empresa chilena dedicada a la comercialización de hongos 
+                    adaptógenos, cacao ceremonial & servicios educativos relacionados 
+                    con la micología & el bienestar integral.
+                </p>
+                <p>
+                    Trabajamos con proveedores locales & garantizamos la trazabilidad 
+                    completa de todos nuestros productos. <strong>No comercializamos 
+                    sustancias fiscalizadas.</strong>
+                </p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>100% Legal</h4>
+                            <p>Productos no fiscalizados</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Trazabilidad</h4>
+                            <p>Origen documentado</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Hecho en Chile</h4>
+                            <p>Producción local</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-feature">
+                        <div class="about-feature-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="3" width="15" height="13"/>
+                                <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                                <circle cx="5.5" cy="18.5" r="2.5"/>
+                                <circle cx="18.5" cy="18.5" r="2.5"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h4>Envío Nacional</h4>
+                            <p>A todo Chile</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA BANNER -->
+    <section class="cta-banner section">
+        <div class="container cta-content">
+            <div class="cta-text">
+                <h2>¿Primera compra?</h2>
+                <p>Suscríbete & recibe un 15% de descuento en tu primer pedido.</p>
+            </div>
+            <a href="#" class="btn btn-light">Obtener descuento</a>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <svg class="logo-mark" viewBox="0 0 100 100" fill="none" style="width: 32px; height: 32px;">
+                            <circle cx="50" cy="50" r="40" fill="var(--chamois)" opacity="0.2"/>
+                            <path d="M50 20 Q35 40 35 55 Q35 70 50 75 Q65 70 65 55 Q65 40 50 20Z" fill="var(--chamois)"/>
+                        </svg>
+                        <span class="logo-text">
+                            C&D Wellness
+                            <span class="logo-subtitle">Adaptógenos & Educación</span>
+                        </span>
+                    </a>
+                    <p>
+                        Hongos adaptógenos, cacao ceremonial & servicios educativos 
+                        para tu bienestar integral. Empresa chilena con factura.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Productos</h4>
+                    <ul>
+                        <li><a href="#">Melena de León</a></li>
+                        <li><a href="#">Reishi</a></li>
+                        <li><a href="#">Cordyceps</a></li>
+                        <li><a href="#">Cacao Ceremonial</a></li>
+                        <li><a href="#">Packs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Talleres</a></li>
+                        <li><a href="#">Cursos Online</a></li>
+                        <li><a href="#">Consultoría</a></li>
+                        <li><a href="#">Calendario</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                        <li><a href="#">Envíos & Devoluciones</a></li>
+                        <li><a href="#">Términos & Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 C&D Wellness SpA. RUT: XX.XXX.XXX-X. Todos los derechos reservados.</p>
+                <div class="footer-payments">
+                    <span>WebPay</span>
+                    <span>Transferencia</span>
+                    <span>MercadoPago</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Reveal on scroll
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
